@@ -8,7 +8,6 @@ export async function deployETHWrapper() {
     const deployTransaction = await ETHWrapperContract.deployed();
     console.log('deployTransaction', deployTransaction.deployTransaction);
 
-
     if (hre.network.name == 'goerli' || hre.network.name == 'sepolia') {
       console.log('waiting for 5 confirmation blocks...');
       await deployTransaction.deployTransaction.wait(5);

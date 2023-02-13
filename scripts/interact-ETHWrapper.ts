@@ -6,13 +6,15 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY || '';
 
 async function main() {
   const ETHWrapperFactory: ETHWrapper__factory = await ethers.getContractFactory("ETHWrapper");
-  const provider = new ethers.providers.JsonRpcProvider();
-  const wallet = await ethers.getSigner('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266');
+  // const provider = new ethers.providers.JsonRpcProvider();
+  const provider = new ethers.providers.InfuraProvider('goerli', GOERLI_KEY);
+  // const wallet = await ethers.getSigner('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266');
+  const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
   const balance = await wallet.getBalance();
   console.log(ethers.utils.formatEther(balance) + " ETH");
 
-  const wrapValue = ethers.utils.parseEther("6");
-  const ETHWrapperContract = await ETHWrapperFactory.attach("0x5fbdb2315678afecb367f032d93f642f64180aa3");
+  const wrapValue = ethers.utils.parseEther("0.1");
+  const ETHWrapperContract = await ETHWrapperFactory.attach("0x9A162bE14C6d874C7f89ec67D1CEb86Cae721458");
   console.log(ETHWrapperContract.address)
 
   const WETHFactory: WETH__factory = await ethers.getContractFactory("WETH");
