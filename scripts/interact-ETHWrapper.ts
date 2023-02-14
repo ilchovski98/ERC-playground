@@ -1,15 +1,9 @@
 import { ethers } from "hardhat";
 import { WETH__factory, ETHWrapper__factory } from "../typechain-types";
 
-const GOERLI_KEY = process.env.GOERLI_KEY || '';
-const PRIVATE_KEY = process.env.PRIVATE_KEY || '';
-
 async function main() {
   const ETHWrapperFactory: ETHWrapper__factory = await ethers.getContractFactory("ETHWrapper");
-  // const provider = new ethers.providers.JsonRpcProvider();
-  const provider = new ethers.providers.InfuraProvider('goerli', GOERLI_KEY);
-  // const wallet = await ethers.getSigner('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266');
-  const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+  const wallet = (await ethers.getSigners())[0];
   const balance = await wallet.getBalance();
   console.log(ethers.utils.formatEther(balance) + " ETH");
 

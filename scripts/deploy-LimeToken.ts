@@ -1,8 +1,8 @@
-import hre, { ethers } from "hardhat";
+import { ethers } from "hardhat";
 
-export async function deployErc() {
+export async function deployLimeToken() {
   try {
-    const LimeToken = await hre.ethers.getContractFactory("LimeToken");
+    const LimeToken = await ethers.getContractFactory("LimeToken");
     const lime = await LimeToken.deploy();
     await lime.deployed();
     console.log("LimeCoin deployed to:", lime.address);

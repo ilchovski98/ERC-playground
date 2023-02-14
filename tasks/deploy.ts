@@ -1,10 +1,10 @@
 import { task } from "hardhat/config";
 import lazyImport from "../utils/lazyImport";
 
-task("deploy-erc", "Deploys ERC20")
+task("deploy-LimeToken", "Deploys ERC20")
   .setAction(async () => {
-    const { deployErc } = await lazyImport("./../scripts/deploy-ETHWrapper");
-    await deployErc();
+    const { deployLimeToken } = await lazyImport("./../scripts/deploy-LimeToken");
+    await deployLimeToken();
   });
 
 task("deploy-ETHWrapper", "Deploys ETHWrapper")
@@ -13,9 +13,15 @@ task("deploy-ETHWrapper", "Deploys ETHWrapper")
     await deployETHWrapper();
   });
 
-task("deploy-nft", "Deploys ERC721")
+task("deploy-NFT", "Deploys ERC721")
   .addParam("privateKey", "Deployer's private key")
   .setAction(async (taskArgs) => {
-    const { deployNFT } = await lazyImport("./../scripts/deploy-nft");
+    const { deployNFT } = await lazyImport("./../scripts/deploy-NFT");
     await deployNFT(taskArgs.privateKey);
+  });
+
+task("deploy-CarCollection", "Deploys CarCollection ERC-1155")
+  .setAction(async () => {
+    const { deployCarCollection } = await lazyImport("./../scripts/deploy-CarCollection");
+    await deployCarCollection();
   });

@@ -3,10 +3,7 @@ import { NFT__factory } from "../typechain-types";
 
 async function main() {
   const NFTFactory: NFT__factory = await ethers.getContractFactory("NFT");
-  const provider = new ethers.providers.JsonRpcProvider();
-  // const provider = new ethers.providers.InfuraProvider('goerli', GOERLI_KEY);
   const wallet = (await ethers.getSigners())[0];
-  // const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
   const NFTContract = await NFTFactory.attach("0x8464135c8F25Da09e49BC8782676a84730C318bC");
   console.log(NFTContract.address);
 
