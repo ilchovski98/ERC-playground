@@ -1,13 +1,5 @@
-# Sample Hardhat Project
+# ERC Playground
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+CarCollection Goerli:
+  - address: 0xdB2f199FEd107198056a89068C493898eF409574
+  - verify link: https://goerli.etherscan.io/address/0xdB2f199FEd107198056a89068C493898eF409574#code
